@@ -1,7 +1,29 @@
-﻿class MessageService {
+﻿const { Message } = require("../db/models");
+const { User } = require("../db/models");
+class MessageService {
   async getAllmessages() {
-    const messages = ["test1", "test2", "test3"];
-    return messages;
+    const messages = await Message.findAll({
+      include: [{ model: User, attributes: ["login"] }],
+    });
+    if (messages.length !== 0) {
+      const messagesReaped = messages.reduce(
+        (acc, curr) => [
+          ...acc,
+          {
+            login: curr.User.login,
+            message: curr.message,
+            userId: curr.userId,
+          },
+        ],
+        [],
+      );
+
+      return messagesReaped;
+    } else return [];
+  }
+
+  async addMessage(message) {
+    Message.create(message);
   }
 }
 

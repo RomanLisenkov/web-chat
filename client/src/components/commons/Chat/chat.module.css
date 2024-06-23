@@ -1,0 +1,25 @@
+﻿.wrapper {
+  background-color: rgb(89, 95, 93);
+  width: 600px;
+  border-radius: 10px;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: auto;
+  height: 500px;
+}
+
+.inputArea {
+  background-color: rgb(118, 125, 123);
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+}

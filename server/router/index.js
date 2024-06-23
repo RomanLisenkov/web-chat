@@ -16,4 +16,5 @@ router.post("/logout", userController.logout);
 router.get("/refresh", userController.refresh);
 router.get("/messages", authMiddleware, messageController.getMessages);
 
+
 module.exports = router;

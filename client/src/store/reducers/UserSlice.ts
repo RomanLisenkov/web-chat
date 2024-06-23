@@ -30,7 +30,6 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchRegistration.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.login = action.payload.user.login;
         state.id = action.payload.user.id;
         state.isAuth = true;
@@ -41,11 +40,9 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchRegistration.rejected, (state, action) => {
-        console.log(action.error);
         state.error = action.error.message;
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.login = action.payload.user.login;
         state.id = action.payload.user.id;
         state.isAuth = true;
@@ -56,7 +53,6 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchLogin.rejected, (state, action) => {
-        console.log(action);
         state.isLoading = false;
         state.error = action.error.message;
       })
@@ -71,12 +67,10 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchLogout.rejected, (state, action) => {
-        console.log(action.error);
         state.isLoading = false;
         state.error = action.error.message;
       })
       .addCase(fetchCheckAuth.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.login = action.payload.user.login;
         state.id = action.payload.user.id;
         state.isAuth = true;
@@ -87,7 +81,6 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchCheckAuth.rejected, (state, action) => {
-        console.log(action.error);
         state.isLoading = false;
         state.error = action.error.message;
       });

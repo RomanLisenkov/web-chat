@@ -9,10 +9,13 @@ type ResponseRegistration = {
   };
 };
 
-export type ResponseError = {
+type MessageFromDbType = {
   message: string;
-  errors: string[];
+  userId: number;
+  login: string;
 };
+
+type ResponseMessages = MessageFromDbType[];
 
 const API_URL = "http://localhost:3000/api";
 
@@ -93,5 +96,11 @@ export async function checkAuth() {
   const response = await axios.get<ResponseRegistration>(`${API_URL}/refresh`, {
     withCredentials: true,
   });
+  return response.data;
+}
+
+export async function getMessages() {
+  const response = await instanceAxios.get<ResponseMessages>("/messages");
+
   return response.data;
 }

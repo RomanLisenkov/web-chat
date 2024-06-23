@@ -60,3 +60,16 @@ export const fetchCheckAuth = createAsyncThunk("user/checkauth", async () => {
     }
   }
 });
+
+export const fetchGetMessages = createAsyncThunk("messages/getMessages", async () => {
+  try {
+    const response = await api.getMessages();
+    return response;
+  } catch (e) {
+    if (axios.isAxiosError(e)) {
+      throw new Error(e.response?.data.message);
+    } else {
+      throw e;
+    }
+  }
+});

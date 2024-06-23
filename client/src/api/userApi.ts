@@ -1,13 +1,17 @@
 ﻿import axios, { AxiosResponse } from "axios";
 
 type ResponseRegistration = {
-  message: string | undefined;
   accessToken: string;
   refreshToken: string;
   user: {
     login: string;
     id: number;
   };
+};
+
+export type ResponseError = {
+  message: string;
+  errors: string[];
 };
 
 const API_URL = "http://localhost:3000/api";
@@ -39,6 +43,8 @@ instanceAxios.interceptors.response.use(
       } catch (e) {
         console.log({ ERROR_REFRESH: e });
       }
+    } else if (error) {
+      throw error;
     }
   },
 );
@@ -67,11 +73,11 @@ export async function login({
   login: string;
   password: string;
 }) {
-  const response: AxiosResponse<ResponseRegistration> =
-    await instanceAxios.post("/login", {
-      login,
-      password,
-    });
+  const response = await instanceAxios.post<ResponseRegistration>("/login", {
+    login,
+    password,
+  });
+
   return response.data;
 }
 

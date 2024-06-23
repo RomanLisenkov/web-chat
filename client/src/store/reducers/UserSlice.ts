@@ -56,7 +56,6 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchLogin.rejected, (state, action) => {
-       
         console.log(action);
         state.isLoading = false;
         state.error = action.error.message;

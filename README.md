@@ -2,9 +2,11 @@
 
 Стек: React, Redux Toolkit, TypeScript, Express, Socket.io, MaterialUI, jsonwebtoken, Postgres.
 
-*Для запуска приложения необходимо будучи в папках /client и /server выполнить команду npm run dev.
-*Для создания бд: npx sequelize db:create.
-*Необходимо так же создать файл .env по аналогии с .env.example.
+Для запуска приложения необходимо будучи в папках /client и /server выполнить команду npm run dev.
+
+Для создания бд: npx sequelize db:create.
+
+Необходимо так же создать файл .env по аналогии с .env.example.
 
 ## Функционал
 
